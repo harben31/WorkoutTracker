@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
         // console.log(workoutData);
         res.json(workoutData);
     } catch (err) {
-        console.log('catch');
+        console.log(err);
         res.json(err);
     };
 });
@@ -44,6 +44,7 @@ router.get('/range', async (req, res) => {
         })
         res.json(workoutData);
     } catch (err) {
+        console.log(err);
         res.json(err);
     }
 });
@@ -64,6 +65,7 @@ router.put('/:id', async (req, res) => {
         workoutData.exercises.push(req.body);
         workoutData.save();
     } catch (err) {
+        console.log(err);
         res.status(500).json(err);
     }
 });
