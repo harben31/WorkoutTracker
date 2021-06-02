@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
                 }
             }
         ]);
-        // console.log(workoutData);
+        console.log(workoutData);
         res.json(workoutData);
     } catch (err) {
         console.log(err);
