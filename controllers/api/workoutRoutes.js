@@ -7,11 +7,12 @@ router.get('/', async (req, res) => {
         const workoutData = await Workout.aggregate([
             { $addFields: {
                     totalDuration: {
-                        $reduce: {
-                            input: '$exercises', initialValue: 0, in: {
-                                $add: ['$$value', '$$this.duration']
-                            }
-                        }
+                        // $reduce: {
+                        //     input: '$exercises', initialValue: 0, in: {
+                        //         $add: ['$$value', '$$this.duration']
+                        //     }
+                        // }
+                        $sum: '$exercises.duration'
                     }
                 }
             }
@@ -30,11 +31,12 @@ router.get('/range', async (req, res) => {
         const workoutData = await Workout.aggregate([
             { $addFields: {
                     totalDuration: {
-                        $reduce: {
-                            input: '$exercises', initialValue: 0, in: {
-                                $add: ['$$value', '$$this.duration']
-                            }
-                        }
+                        // $reduce: {
+                        //     input: '$exercises', initialValue: 0, in: {
+                        //         $add: ['$$value', '$$this.duration']
+                        //     }
+                        // }
+                        $sum: '$exercises.duration'
                     }
                 }
             }
