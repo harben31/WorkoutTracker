@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
                 }
             }
         ]);
-        console.log(workoutData);
+        // console.log(workoutData);
         res.json(workoutData);
     } catch (err) {
         console.log(err);
@@ -64,6 +64,7 @@ router.put('/:id', async (req, res) => {
         const workoutData = await Workout.findById(req.params.id);
         workoutData.exercises.push(req.body);
         workoutData.save();
+        res.json(workoutData);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
